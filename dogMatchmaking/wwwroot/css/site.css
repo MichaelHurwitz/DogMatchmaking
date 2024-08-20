@@ -1,0 +1,125 @@
+/* site.css */
+
+/* Style for the overall page */
+body {
+    background: #f5f5f5; /* Light, pleasant background */
+    font-family: Arial, sans-serif; /* Font family */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Style for the hero section */
+.hero-section {
+    background: linear-gradient(to right, #ff9a9e, #fad0c4); /* Warm, soft colors */
+    padding: 50px 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #333;
+}
+
+    .hero-section h1 {
+        font-size: 3rem;
+        color: #fff;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+        color: #fff;
+    }
+
+/* Style for the gallery container */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Auto-adjust columns */
+    gap: 10px; /* Space between images */
+    padding: 10px; /* Padding for gallery */
+}
+
+/* Style for the gallery items */
+.gallery-item {
+    overflow: hidden; /* Prevent overflow */
+    border-radius: 50%; /* Circular images */
+    border: 2px solid #ddd; /* Border around images */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+    /* Style for the gallery images */
+    .gallery-item img {
+        width: 100%; /* Fit container */
+        height: auto; /* Maintain aspect ratio */
+        display: block; /* Remove bottom space */
+        object-fit: cover; /* Cover the area of the div */
+    }
+
+/* Style for the dog image */
+.dog-image {
+    width: 100%; /* Ensure it scales properly */
+    max-width: 200px; /* Set a maximum width */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    display: block; /* Center image */
+    margin: 0 auto; /* Center the image */
+}
+
+/* Style for the form container */
+.form-container {
+    background-color: #fff; /* White background */
+    padding: 20px; /* Add padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    max-width: 500px; /* Limit form width */
+    margin: 20px auto; /* Center the form horizontally */
+}
+
+    /* Style for form elements */
+    .form-container label {
+        display: block; /* Block display for labels */
+        margin-bottom: 8px; /* Space below label */
+        font-weight: bold; /* Make label text bold */
+    }
+
+    .form-container input[type="text"] {
+        width: 100%; /* Full width input */
+        padding: 8px; /* Add padding */
+        margin-bottom: 12px; /* Space below input */
+        border: 1px solid #ccc; /* Border color */
+        border-radius: 4px; /* Rounded corners */
+    }
+
+    .form-container button {
+        background-color: #ff6f61; /* Warm color for button */
+        border: none; /* Remove default border */
+        color: #fff; /* White text color */
+        padding: 10px 20px; /* Padding for button */
+        border-radius: 4px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        font-size: 1rem; /* Font size */
+    }
+
+        .form-container button:hover {
+            background-color: #e55b53; /* Darker color on hover */
+        }
+
+    .form-container a {
+        display: inline-block; /* Inline block for link */
+        margin-top: 10px; /* Space above link */
+        color: #007bff; /* Link color */
+        text-decoration: none; /* Remove underline */
+        font-size: 1rem; /* Font size */
+    }
+
+        .form-container a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+/* Footer styling */
+.footer {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 1rem; /* Add padding */
+    text-align: center; /* Center text */
+    border-top: 1px solid #dee2e6; /* Border to distinguish footer */
+    margin-top: auto; /* Push footer to bottom */
+}

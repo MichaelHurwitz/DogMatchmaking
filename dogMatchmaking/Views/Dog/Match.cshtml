@@ -1,0 +1,17 @@
+﻿@model DogModel;
+
+<h2>Match a dog</h2>
+
+<img src="@Model.Image" alt="Dog" class="dog-image" />
+
+<form asp-action="AdoptDog" method="post" class="form-container">
+    <input type="hidden" name="userId" value="@ViewBag.UserId" />
+    <input type="hidden" name="dogImage" value="@Model.Image" />
+    <div>
+        <label for="dogName">Name:</label>
+        <input type="text" id="dogName" name="dogName" required />
+    </div>
+    <button type="submit">Adopt</button>
+</form>
+
+<a asp-action="Match" asp-route-userId="@ViewBag.UserId">Next dog</a>

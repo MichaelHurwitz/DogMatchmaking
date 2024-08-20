@@ -1,0 +1,118 @@
+﻿@model List<UserModel>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f4f1; /* Light warm background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff; /* White background for table */
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #d35400; /* Warm orange */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0; /* Light grey border */
+        }
+
+        th {
+            background-color: #f8c291; /* Warm peach */
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #fef9f7; /* Very light peach */
+        }
+
+        img {
+            border-radius: 50%;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: #fff;
+            margin-right: 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .btn-details {
+            background-color: #e67e22; /* Warm orange */
+        }
+
+            .btn-details:hover {
+                background-color: #d35400;
+            }
+
+        .btn-match {
+            background-color: #f39c12; /* Warm yellow */
+        }
+
+            .btn-match:hover {
+                background-color: #e67e22;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>@ViewData["Title"]</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.FullName</td>
+                        <td><img src="@user.Image" alt="@user.FullName" width="50" height="50" /></td>
+                        <td class="actions">
+                            <a class="btn btn-details" asp-action="Details" asp-route-id="@user.Id">Details</a>
+                            <a class="btn btn-match" asp-controller="Dog" asp-action="Match" asp-route-userId="@user.Id">Match a dog</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

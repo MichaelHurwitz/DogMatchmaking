@@ -1,0 +1,44 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center hero-section">
+	<h1 class="display-4">Welcome to dogMatchmaking!</h1>
+	<p>Find the perfect dog for you.</p>
+	<a href="@Url.Action("Index", "User")" class="btn btn-primary">Go to Users Page</a>
+</div>
+
+<!-- Gallery of dog images -->
+<div class="container mt-4">
+	<h2 class="text-center">Dog Gallery</h2>
+	<div class="gallery-container" id="dogGallery">
+		<!-- Images will be inserted here dynamically -->
+	</div>
+</div>
+
+@section Scripts {
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const galleryContainer = document.getElementById('dogGallery');
+			const numGalleryImages = 12; // Number of images in gallery
+
+			// Fetch dog images from API
+			fetch('https://dog.ceo/api/breeds/image/random/' + numGalleryImages)
+				.then(response => response.json())
+				.then(data => {
+					const images = data.message;
+
+					// Populate gallery
+					images.forEach((imageUrl, index) => {
+						const galleryItem = `
+											<div class="gallery-item">
+												<img src="${imageUrl}" class="img-fluid" alt="Dog Image ${index + 1}">
+											</div>
+										`;
+						galleryContainer.innerHTML += galleryItem;
+					});
+				})
+				.catch(error => console.error('Error fetching dog images:', error));
+		});
+	</script>
+}

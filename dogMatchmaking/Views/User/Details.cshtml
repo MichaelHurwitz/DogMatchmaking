@@ -1,0 +1,128 @@
+﻿@model UserModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f4f1; /* Light warm background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff; /* White background */
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3, h4 {
+            color: #d35400; /* Warm orange */
+        }
+
+        img {
+            border-radius: 8px;
+        }
+
+        .details-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .dogs-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+            .dogs-list li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                background-color: #fef9f7; /* Very light peach */
+                padding: 10px;
+                border-radius: 4px;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .dogs-list img {
+                margin-right: 10px;
+                border-radius: 4px;
+            }
+
+        .remove-button {
+            background-color: #e67e22; /* Warm orange */
+            color: #fff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+            .remove-button:hover {
+                background-color: #d35400;
+            }
+
+        .match-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            border-radius: 4px;
+            background-color: #f39c12; /* Warm yellow */
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+            .match-button:hover {
+                background-color: #e67e22;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Details</h2>
+
+        <div class="details-container">
+            <h4>@Model.FullName</h4>
+            <img src="@Model.Image" alt="@Model.FullName" width="100" />
+        </div>
+
+        <h3>Adopted dogs</h3>
+
+        @if (Model.Dogs.Any())
+        {
+            <ul class="dogs-list">
+                @foreach (var dog in Model.Dogs)
+                {
+                    <li>
+                        <img src="@dog.Image" alt="@dog.Name" width="50" />
+                        @dog.Name
+                        <form asp-action="RemoveDog" asp-route-userId="@Model.Id" asp-route-dogId="@dog.Id" method="post">
+                            <button type="submit" class="remove-button">Remove</button>
+                        </form>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No Adopted dogs yet</p>
+        }
+
+        <a class="match-button" asp-controller="Dog" asp-action="Match" asp-route-userId="@Model.Id">Match a new dog</a>
+    </div>
+</body>
+</html>
